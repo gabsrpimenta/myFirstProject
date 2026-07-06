@@ -6,7 +6,6 @@ public class App {
     public static void main(String[] args) {
         Calculadora calc = new Calculadora();
 
-        // Cenários de teste
         System.out.println("--- Testando a Calculadora ---");
         System.out.println("Soma (10 + 5): " + calc.soma(10, 5));
         System.out.println("Subtração (10 - 5): " + calc.subtracao(10, 5));

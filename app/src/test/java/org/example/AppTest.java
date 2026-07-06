@@ -9,14 +9,12 @@ class AppTest {
     @Test
     void testSomaCalculadora() {
         Calculadora calc = new Calculadora();
-        // assertEquals checa se o primeiro valor (esperado) é igual ao segundo (resultado do código)
         assertEquals(15.0, calc.soma(10, 5), "A soma de 10 + 5 deveria ser 15.0");
     }
 
     @Test
     void testDivisaoPorZero() {
         Calculadora calc = new Calculadora();
-        // Esse teste garante que a calculadora realmente dispara o erro se dividirmos por zero
         assertThrows(IllegalArgumentException.class, () -> {
             calc.divisao(10, 0);
         });
