@@ -8,4 +8,4 @@ build
 .kotlin
 
 # Ignore paste .IDEA
-.idea
+.idea/
