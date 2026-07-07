@@ -35,20 +35,21 @@ public class App {
             }
 
             if (opcao >= 1 && opcao <= 4) {
-
+                String valor = null;
                 System.out.print("Digite o primeiro número: ");
                 while (!leitor.hasNextDouble()) {
                     System.out.print("⚠️ Entrada inválida! Digite apenas números: ");
-                    leitor.next();
+                    valor = leitor.next();
                 }
-                double num1 = leitor.nextDouble();
+                double num1 = Double.parseDouble(valor);
 
                 System.out.print("Digite o segundo número: ");
                 while (!leitor.hasNextDouble()) {
                     System.out.print("⚠️ Entrada inválida! Digite apenas números: ");
                     leitor.next();
                 }
-                double num2 = leitor.nextDouble();
+                valor = leitor.next();
+                double num2 = Double.parseDouble(valor);
 
                 System.out.println("\n--- Processando Resultado ---");
 
