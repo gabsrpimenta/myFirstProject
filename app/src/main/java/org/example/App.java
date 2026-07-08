@@ -48,22 +48,17 @@ public class App {
             System.out.print("Digite o primeiro número: ");
             double num1 = getNextDouble(leitor);
 
-            // --- SEGUNDO NÚMERO ---
-            double num2 = 0;
-            while (true) {
-                System.out.print("Digite o segundo número: ");
-                num2 = getNextDouble(leitor);
-
-                if (opcao == 4 && num2 == 0) {
-                    System.out.println("❌ Erro Matemático: Não é possível dividir por zero. Tente outro valor!");
-                } else {
-                    break;
-                }
-            }
+            // --- SEGUNDO NÚMERO  ---
+            System.out.print("Digite o segundo número: ");
+            double num2 = getNextDouble(leitor);
 
             logger.info("Processando Resultado para a opção: {}", opcao);
 
-            executarEExibirOperacao(opcao, num1, num2, calc);
+            try {
+                executarEExibirOperacao(opcao, num1, num2, calc);
+            } catch (IllegalArgumentException e) {
+                System.err.println("❌ " + e.getMessage());
+            }
         }
 
         leitor.close();
