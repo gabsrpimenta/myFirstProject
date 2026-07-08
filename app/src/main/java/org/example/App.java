@@ -1,9 +1,14 @@
 package org.example;
 
 import org.example.service.Calculadora;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 
 public class App {
+
+    private static final Logger logger = LogManager.getLogger(App.class);
+
     public static void main(String[] args) {
 
         Calculadora calc = new Calculadora();
@@ -29,40 +34,25 @@ public class App {
             }
             opcao = leitor.nextInt();
 
-            // 1ª Cláusula de Guarda: Se for 5, sai imediatamente
             if (opcao == 5) {
                 System.out.println("\nObrigado por usar a calculadora!");
                 break;
             }
 
-            // 2ª Cláusula de Guarda : Trata a exceção logo no topo
             if (opcao < 1 || opcao > 4) {
                 System.out.println("⚠️ Essa opção não existe! Escolha um número entre 1 a 5.");
-                continue; // 🔄 Volta para o início do 'while', ignorando tudo o que está abaixo
+                continue;
             }
-
-            String valor = null;
 
             // --- PRIMEIRO NÚMERO ---
             System.out.print("Digite o primeiro número: ");
-            while (!leitor.hasNextDouble()) {
-                System.out.print("⚠️ Entrada inválida! Digite apenas números: ");
-                valor = leitor.next();
-            }
-            valor = leitor.next();
-            double num1 = Double.parseDouble(valor);
+            double num1 = getNextDouble(leitor);
 
             // --- SEGUNDO NÚMERO ---
             double num2 = 0;
             while (true) {
                 System.out.print("Digite o segundo número: ");
-
-                while (!leitor.hasNextDouble()) {
-                    System.out.print("⚠️ Entrada inválida! Digite apenas números: ");
-                    leitor.next();
-                }
-                valor = leitor.next();
-                num2 = Double.parseDouble(valor);
+                num2 = getNextDouble(leitor);
 
                 if (opcao == 4 && num2 == 0) {
                     System.out.println("❌ Erro Matemático: Não é possível dividir por zero. Tente outro valor!");
@@ -71,32 +61,43 @@ public class App {
                 }
             }
 
-            System.out.println("\n--- Processando Resultado ---");
+            logger.info("Processando Resultado para a opção: {}", opcao);
 
-            String nomeOperacao = "";
-            double resultado = 0;
-
-            if (opcao == 1) {
-                nomeOperacao = "Soma";
-                resultado = calc.soma(num1, num2);
-
-            } else if (opcao == 2) {
-                nomeOperacao = "Subtração";
-                resultado = calc.subtracao(num1, num2);
-
-            } else if (opcao == 3) {
-                nomeOperacao = "Multiplicação";
-                resultado = calc.multiplicacao(num1, num2);
-
-            } else if (opcao == 4) {
-                nomeOperacao = "Divisão";
-                resultado = calc.divisao(num1, num2);
-            }
-
-            System.out.println("✅ O resultado da " + nomeOperacao + " é: " + resultado);
+            executarEExibirOperacao(opcao, num1, num2, calc);
         }
 
         leitor.close();
         System.out.println("--- Programa Encerrado ---");
+    }
+
+    private static void executarEExibirOperacao(int opcao, double num1, double num2, Calculadora calc) {
+        String nomeOperacao = "";
+        double resultado = 0;
+
+        if (opcao == 1) {
+            nomeOperacao = "Soma";
+            resultado = calc.soma(num1, num2);
+        } else if (opcao == 2) {
+            nomeOperacao = "Subtração";
+            resultado = calc.subtracao(num1, num2);
+        } else if (opcao == 3) {
+            nomeOperacao = "Multiplicação";
+            resultado = calc.multiplicacao(num1, num2);
+        } else if (opcao == 4) {
+            nomeOperacao = "Divisão";
+            resultado = calc.divisao(num1, num2);
+        }
+
+        System.out.println("✅ O resultado da " + nomeOperacao + " é: " + resultado);
+    }
+
+    private static double getNextDouble(Scanner leitor) {
+        String valor;
+        while (!leitor.hasNextDouble()) {
+            System.out.print("⚠️ Entrada inválida! Digite apenas números: ");
+            valor = leitor.next();
+        }
+        valor = leitor.next();
+        return Double.parseDouble(valor);
     }
 }
