@@ -22,12 +22,12 @@ public class Calculadora {
         return a * b;
     }
 
-    public double divisao(double a, double b) {
-        if (b == 0) {
-            logger.error("Tentativa de divisão por zero abortada. Numerador: {}", a);
-            throw new IllegalArgumentException("Erro: Não é possível dividir por zero!");
+    public double divisao(double num1, double num2) {
+        if (num2 == 0) {
+            logger.error("Tentativa de divisão por zero abortada. Numerador: {}", num1);
+            throw new IllegalArgumentException("Erro Matemático: Não é possível dividir por zero.");
         }
-        logger.info("Realizando operação de divisão entre {} e {}", a, b);
-        return a / b;
+        logger.info("Realizando operação de divisão entre {} e {}", num1, num2);
+        return num1 / num2;
     }
 }
