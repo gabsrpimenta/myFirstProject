@@ -52,6 +52,11 @@ public class App {
             System.out.print("Digite o segundo número: ");
             double num2 = getNextDouble(leitor);
 
+            while (opcao == 4 && num2 == 0) {
+                System.out.print("⚠️ Erro: Não é possível dividir por zero! Digite outro número: ");
+                num2 = getNextDouble(leitor);
+            }
+
             logger.info("Processando Resultado para a opção: {}", opcao);
 
             try {
@@ -87,12 +92,10 @@ public class App {
     }
 
     private static double getNextDouble(Scanner leitor) {
-        String valor;
         while (!leitor.hasNextDouble()) {
             System.out.print("⚠️ Entrada inválida! Digite apenas números: ");
-            valor = leitor.next();
+            leitor.next();
         }
-        valor = leitor.next();
-        return Double.parseDouble(valor);
+        return leitor.nextDouble();
     }
 }

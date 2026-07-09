@@ -1,0 +1,128 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-07-09T12:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v8.0.0",
+  "resources": [
+    {
+      "_id": "wrk_calculator",
+      "_type": "workspace",
+      "parentId": null,
+      "name": "Calculator API",
+      "description": "Coleção de requisições para a API da Calculadora (Tarefa 4)",
+      "scope": "collection"
+    },
+    {
+      "_id": "env_base",
+      "_type": "environment",
+      "parentId": "wrk_calculator",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8080"
+      }
+    },
+    {
+      "_id": "fld_calculator",
+      "_type": "request_group",
+      "parentId": "wrk_calculator",
+      "name": "v1/calculator",
+      "description": "Endpoints da calculadora"
+    },
+    {
+      "_id": "req_sum",
+      "_type": "request",
+      "parentId": "fld_calculator",
+      "name": "Sum",
+      "description": "Soma dois números. Retorna 400 se algum valor não for um número válido.",
+      "method": "POST",
+      "url": "{{ _.base_url }}/v1/calculator/sum",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"a\": \"10\",\n  \"b\": \"5\"\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ]
+    },
+    {
+      "_id": "req_subtract",
+      "_type": "request",
+      "parentId": "fld_calculator",
+      "name": "Subtract",
+      "description": "Subtrai dois números. Retorna 400 se algum valor não for um número válido.",
+      "method": "POST",
+      "url": "{{ _.base_url }}/v1/calculator/subtract",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"a\": \"10\",\n  \"b\": \"5\"\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ]
+    },
+    {
+      "_id": "req_multiply",
+      "_type": "request",
+      "parentId": "fld_calculator",
+      "name": "Multiply",
+      "description": "Multiplica dois números. Retorna 400 se algum valor não for um número válido.",
+      "method": "POST",
+      "url": "{{ _.base_url }}/v1/calculator/multiply",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"a\": \"10\",\n  \"b\": \"5\"\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ]
+    },
+    {
+      "_id": "req_divide",
+      "_type": "request",
+      "parentId": "fld_calculator",
+      "name": "Divide",
+      "description": "Divide dois números. Retorna 400 se algum valor não for um número válido ou se o divisor for zero.",
+      "method": "POST",
+      "url": "{{ _.base_url }}/v1/calculator/divide",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"a\": \"10\",\n  \"b\": \"5\"\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ]
+    },
+    {
+      "_id": "req_divide_by_zero",
+      "_type": "request",
+      "parentId": "fld_calculator",
+      "name": "Divide - Division by zero (400)",
+      "description": "Exemplo de erro: divisão por zero deve retornar 400.",
+      "method": "POST",
+      "url": "{{ _.base_url }}/v1/calculator/divide",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"a\": \"10\",\n  \"b\": \"0\"\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ]
+    },
+    {
+      "_id": "req_sum_invalid",
+      "_type": "request",
+      "parentId": "fld_calculator",
+      "name": "Sum - Invalid number (400)",
+      "description": "Exemplo de erro: valor não numérico deve retornar 400.",
+      "method": "POST",
+      "url": "{{ _.base_url }}/v1/calculator/sum",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"a\": \"abc\",\n  \"b\": \"5\"\n}"
+      },
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" }
+      ]
+    }
+  ]
+}
