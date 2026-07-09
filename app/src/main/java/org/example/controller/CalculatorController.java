@@ -76,7 +76,6 @@ public class CalculatorController {
         }
     }
 
-    // Converte String para Double; retorna null se não for um número válido
     private Double parseOrNull(String valor) {
         try {
             return Double.parseDouble(valor);
