@@ -87,12 +87,9 @@ public class App {
     }
 
     private static double getNextDouble(Scanner leitor) {
-        String valor;
         while (!leitor.hasNextDouble()) {
             System.out.print("⚠️ Entrada inválida! Digite apenas números: ");
-            valor = leitor.next();
         }
-        valor = leitor.next();
-        return Double.parseDouble(valor);
+        return leitor.nextDouble();
     }
 }
