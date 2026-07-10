@@ -33,7 +33,7 @@
       "_type": "request",
       "parentId": "fld_calculator",
       "name": "Sum",
-      "description": "Soma dois números. Retorna 400 se algum valor não for um número válido.",
+      "description": "Soma dois números.",
       "method": "POST",
       "url": "{{ _.base_url }}/v1/calculator/sum",
       "body": {
@@ -49,7 +49,7 @@
       "_type": "request",
       "parentId": "fld_calculator",
       "name": "Subtract",
-      "description": "Subtrai dois números. Retorna 400 se algum valor não for um número válido.",
+      "description": "Subtrai dois números.",
       "method": "POST",
       "url": "{{ _.base_url }}/v1/calculator/subtract",
       "body": {
@@ -65,7 +65,7 @@
       "_type": "request",
       "parentId": "fld_calculator",
       "name": "Multiply",
-      "description": "Multiplica dois números. Retorna 400 se algum valor não for um número válido.",
+      "description": "Multiplica dois números.",
       "method": "POST",
       "url": "{{ _.base_url }}/v1/calculator/multiply",
       "body": {
@@ -81,44 +81,12 @@
       "_type": "request",
       "parentId": "fld_calculator",
       "name": "Divide",
-      "description": "Divide dois números. Retorna 400 se algum valor não for um número válido ou se o divisor for zero.",
+      "description": "Divide dois números.",
       "method": "POST",
       "url": "{{ _.base_url }}/v1/calculator/divide",
       "body": {
         "mimeType": "application/json",
         "text": "{\n  \"a\": \"10\",\n  \"b\": \"5\"\n}"
-      },
-      "headers": [
-        { "name": "Content-Type", "value": "application/json" }
-      ]
-    },
-    {
-      "_id": "req_divide_by_zero",
-      "_type": "request",
-      "parentId": "fld_calculator",
-      "name": "Divide - Division by zero (400)",
-      "description": "Exemplo de erro: divisão por zero deve retornar 400.",
-      "method": "POST",
-      "url": "{{ _.base_url }}/v1/calculator/divide",
-      "body": {
-        "mimeType": "application/json",
-        "text": "{\n  \"a\": \"10\",\n  \"b\": \"0\"\n}"
-      },
-      "headers": [
-        { "name": "Content-Type", "value": "application/json" }
-      ]
-    },
-    {
-      "_id": "req_sum_invalid",
-      "_type": "request",
-      "parentId": "fld_calculator",
-      "name": "Sum - Invalid number (400)",
-      "description": "Exemplo de erro: valor não numérico deve retornar 400.",
-      "method": "POST",
-      "url": "{{ _.base_url }}/v1/calculator/sum",
-      "body": {
-        "mimeType": "application/json",
-        "text": "{\n  \"a\": \"abc\",\n  \"b\": \"5\"\n}"
       },
       "headers": [
         { "name": "Content-Type", "value": "application/json" }
