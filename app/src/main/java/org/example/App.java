@@ -52,11 +52,6 @@ public class App {
             System.out.print("Digite o segundo número: ");
             double num2 = getNextDouble(leitor);
 
-            while (opcao == 4 && num2 == 0) {
-                System.out.print("⚠️ Erro: Não é possível dividir por zero! Digite outro número: ");
-                num2 = getNextDouble(leitor);
-            }
-
             logger.info("Processando Resultado para a opção: {}", opcao);
 
             try {
