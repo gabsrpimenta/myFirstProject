@@ -40,3 +40,7 @@ tasks.named<org.springframework.boot.gradle.tasks.run.BootRun>("bootRun") {
 tasks.named<Test>("test") {
     useJUnitPlatform()
 }
+
+tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+    mainClass.set("org.example.CalculatorApplication")
+}
